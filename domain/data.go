@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-type PriceBtc struct {
+type PriceCoin struct {
 	High      float32
 	Last      float32
 	Timestamp int64
@@ -19,7 +19,7 @@ type PriceBtc struct {
 
 func Pricebtc(w http.ResponseWriter, r *http.Request) {
 
-	example := &PriceBtc{
+	example := &PriceCoin{
 		High:      6511.60000000,
 		Last:      6198.04,
 		Timestamp: 1585760373,

@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	info := domain.PriceBtc{
+	info := domain.PriceCoin{
 		High:      6511.60000000,
 		Last:      6198.04,
 		Timestamp: 1585760373,
