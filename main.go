@@ -4,12 +4,12 @@ import (
 	"log"
 	"net/http"
 
-	domain "github.com/ckoin/domain"
+	app "github.com/ckoin/app"
 )
 
 func main() {
 
-	info := domain.PriceCoin{
+	info := app.PriceCoin{
 		High:      6511.60000000,
 		Last:      6198.04,
 		Timestamp: 1585760373,
@@ -22,6 +22,6 @@ func main() {
 	}
 
 	log.Println(info)
-	http.HandleFunc("/", domain.Pricebtc)
+	http.HandleFunc("/", app.Pricebtc)
 	http.ListenAndServe(":8000", nil)
 }
