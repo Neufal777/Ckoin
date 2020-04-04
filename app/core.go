@@ -17,7 +17,7 @@ type PriceCoin struct {
 	Open      float32
 }
 
-func Pricebtc(w http.ResponseWriter, r *http.Request) {
+func Home(w http.ResponseWriter, r *http.Request) {
 
 	example := &PriceCoin{
 		High:      6511.60000000,
