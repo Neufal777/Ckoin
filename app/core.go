@@ -50,11 +50,8 @@ func Home() {
 		body, _ := ioutil.ReadAll(resp.Body)
 
 		defer resp.Body.Close()
-		//jsonData, err := json.MarshalIndent(body, "", "    ")
 
 		res := string(body)
-
-		//log.Println(c, " :", res)
 
 		in := []byte(res)
 		var raw map[string]interface{}
