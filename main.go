@@ -6,5 +6,6 @@ import (
 
 func main() {
 
-	app.Home()
+	//Check prices of different cryptocurrencies (Bitstamp Price)
+	app.CheckPrices()
 }
