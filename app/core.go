@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 type PriceCoin struct {
@@ -62,7 +63,17 @@ func Home() {
 		}
 		raw["count"] = 1
 		out, _ := json.MarshalIndent(raw, "", "  ")
+
+		c = strings.ToUpper(c)
+
+		c1 := c[:3]
+		c2 := c[3:6]
+
+		c = c1 + " - " + c2
+
+		println(c, "\n")
 		println(string(out))
+		println("\n")
 	}
 
 }
