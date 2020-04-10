@@ -1,7 +1,8 @@
-package domain
+package app
 
 import (
-	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -17,34 +18,41 @@ type PriceCoin struct {
 	Open      float32
 }
 
-func Pricebtc(w http.ResponseWriter, r *http.Request) {
+func Home() {
 
-	example := &PriceCoin{
-		High:      6511.60000000,
-		Last:      6198.04,
-		Timestamp: 1585760373,
-		Bid:       6191.84,
-		Vwap:      6312.49,
-		Volume:    6685.93951412,
-		Low:       6137.71000000,
-		Ask:       6198.04,
-		Open:      6428.74,
+	cryptos := []string{
+		"btcusd",
+		"btceur",
+		"eurusd",
+		"xrpusd",
+		"xrpeur",
+		"xrpbtc",
+		"ltcusd",
+		"ltceur",
+		"ltcbtc",
+		"ethusd",
+		"etheur",
+		"ethbtc",
+		"bchusd",
+		"bcheur",
+		"bchbtc",
 	}
 
-	// resp, err := http.Get("https://www.bitstamp.net/api/ticker/")
+	for _, c := range cryptos {
+		resp, err := http.Get("https://www.bitstamp.net/api/v2/ticker/" + c + "/")
 
-	// if err != nil {
-	// 	log.Println(err)
-	// }
-	// defer resp.Body.Close()
-	// body, _ := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			log.Println(err)
+		}
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
 
-	// defer resp.Body.Close()
-	// //jsonData, err := json.MarshalIndent(body, "", "    ")
+		defer resp.Body.Close()
+		//jsonData, err := json.MarshalIndent(body, "", "    ")
 
-	// res := string(body)
+		res := string(body)
 
-	i := example.Last
-	x := fmt.Sprintf("%f", i)
-	fmt.Fprintf(w, x)
+		log.Println(c, " :", res)
+	}
+
 }
