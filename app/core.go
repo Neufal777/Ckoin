@@ -1,9 +1,11 @@
 package app
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 type PriceCoin struct {
@@ -48,11 +50,27 @@ func Home() {
 		body, _ := ioutil.ReadAll(resp.Body)
 
 		defer resp.Body.Close()
-		//jsonData, err := json.MarshalIndent(body, "", "    ")
 
 		res := string(body)
 
-		log.Println(c, " :", res)
+		in := []byte(res)
+		var raw map[string]interface{}
+		if err := json.Unmarshal(in, &raw); err != nil {
+			panic(err)
+		}
+		raw["count"] = 1
+		out, _ := json.MarshalIndent(raw, "", "  ")
+
+		c = strings.ToUpper(c)
+
+		c1 := c[:3]
+		c2 := c[3:6]
+
+		c = c1 + " - " + c2
+
+		println(c, "\n")
+		println(string(out))
+		println("\n")
 	}
 
 }
