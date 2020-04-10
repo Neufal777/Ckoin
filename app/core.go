@@ -1,6 +1,7 @@
 package app
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -52,7 +53,16 @@ func Home() {
 
 		res := string(body)
 
-		log.Println(c, " :", res)
+		//log.Println(c, " :", res)
+
+		in := []byte(res)
+		var raw map[string]interface{}
+		if err := json.Unmarshal(in, &raw); err != nil {
+			panic(err)
+		}
+		raw["count"] = 1
+		out, _ := json.MarshalIndent(raw, "", "  ")
+		println(string(out))
 	}
 
 }
