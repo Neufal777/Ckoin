@@ -8,27 +8,9 @@ import (
 	"strings"
 )
 
-func CheckPrices() {
+func CheckPrices(curr []string) {
 
-	cryptos := []string{
-		"btcusd",
-		"btceur",
-		"eurusd",
-		"xrpusd",
-		"xrpeur",
-		"xrpbtc",
-		"ltcusd",
-		"ltceur",
-		"ltcbtc",
-		"ethusd",
-		"etheur",
-		"ethbtc",
-		"bchusd",
-		"bcheur",
-		"bchbtc",
-	}
-
-	for _, c := range cryptos {
+	for _, c := range curr {
 
 		resp, err := http.Get("https://www.bitstamp.net/api/v2/ticker/" + c + "/")
 

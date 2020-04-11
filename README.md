@@ -14,7 +14,13 @@ import (
 
 func main() {
 
-	app.CheckPrices()
+	//Check prices of different cryptocurrencies (Bitstamp Price)
+	crypt := []string{
+		"btcusd",
+		"btceur",
+		//add as many as you want
+	}
+	app.CheckPrices(crypt)
 }
 
 ```
