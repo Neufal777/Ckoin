@@ -1,0 +1,14 @@
+{
+	"ImportPath": "github.com/Ckoin",
+	"GoVersion": "go1.14",
+	"GodepVersion": "v80",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/ckoin/app",
+			"Rev": "861b3bb30c4fec6bce3a95184e3ff182f4c0a94f"
+		}
+	]
+}
