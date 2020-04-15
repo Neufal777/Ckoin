@@ -43,5 +43,7 @@ func main() {
 		"bchbtc",
 		//add as many as you want
 	}
+
+	
 	app.CheckPrices(crypt)
 }
